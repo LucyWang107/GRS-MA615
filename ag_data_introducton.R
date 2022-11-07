@@ -5,7 +5,7 @@ library(magrittr)
 library(readxl)
 
 ## Start by reading the data
-strawb <- read_xlsx("strawberries-2022oct30-a.xlsx", col_names = T)
+strawb <- read_xlsx("615 Midterm/strawberries-2022oct30-a.xlsx", col_names = T)
 
 cnames <- colnames(strawb)
 x <- 1:dim(strawb)[2]
@@ -65,10 +65,7 @@ library(Rmisc)
 nonorgan.ca.2016 <- filter(strawb, State == 'CALIFORNIA' 
                                 & Year == 2016 
                                 & Domain != 'ORGANIC STATUS')
-new.non <- filter(nonorgan.ca.2016, Value != "(NA)" & Value != "(D)" 
-                  & Domain != "TOTAL")
-
-CI(as.numeric(new.non$Value))
+CI(as.numeric(nonorgan.ca.2016$Value))
 
 ## 4
 unique(strawb[10])
